@@ -6,15 +6,21 @@ Todo App:
 This webpage is created on React Framework has basic functionality like Log-in, log-out, Add, Edit, Delete.
 
 -- First user needs  to login into the system. 
+
 -- Then user can add task using input box. If user already has some task which may have been entered earlier then that task will be fetched and displayed in the webpage.
+
 -- User can edit task, remove it or can mark it complete by clicking on the task text.
+
 -- Then if user can also logout of the system.
 
 
 ## Prerequisites
 
+
 --  [NodeJS](https://nodejs.org/en/download/)  installed.
+
 --  [Yarn](https://yarnpkg.com/getting-started/install)  installed. (`npm install -g yarn`)
+
 --  Clone this repo.
 
 
