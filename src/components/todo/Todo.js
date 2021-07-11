@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+
 import { withRouter } from "react-router-dom";
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
+
 import TodoList from './TodoList';
 
 function Todo({ todos, completeTodo, removeTodo, updateTodo }) {

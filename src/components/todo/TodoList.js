@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { withRouter } from "react-router-dom";
+
 import { v4 as uuidv4 } from 'uuid';
 
 
 function TodoList(props) {
-
     const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
     const handleChanges = e => {
@@ -28,14 +28,13 @@ function TodoList(props) {
     };
 
     const inputRef = useRef(null);
+
     useEffect(() => {
         inputRef.current.focus();
     });
-    // console.log("props.edit - ", props.edit)
 
     return (
         <>
-
             {props.edit && (
                 <>
                     <input
@@ -71,10 +70,7 @@ function TodoList(props) {
                     </form>
                 </>
             )}
-
         </>
-
-
     )
 }
 

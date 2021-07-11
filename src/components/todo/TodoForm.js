@@ -9,16 +9,15 @@ function TodoForm(props) {
     const [todos, setTodos] = useState([]);
     let filePath = props.filePath;
 
-    // loadData will load the users data from SkyDB
+    // loadData will load the users data mySky client
     const loadData = async (event) => {
         if (!filePath || filePath === "undefined") {
             filePath = "localhost/" + props.userID;
         }
 
         try {
-            console.log(filePath)
+            console.log("Debug filePath - ", filePath)
             const { data } = await props.mySky.getJSON(filePath);
-            console.log("data -- ", data)
             // To use this elsewhere in our React app, save the data to the state.
             if (data) {
                 setTodos(data.arrayList);
@@ -27,7 +26,7 @@ function TodoForm(props) {
                 props.updateErrorMessage(`Error with getJSON: Unknown Error}`)
             }
         } catch (error) {
-            console.error('There was a problem with getJSON111 ', error);
+            console.error('There was a problem with getJSON --  ', error);
             props.updateErrorMessage(`Error with getJSON: ${error.message}`)
         }
     };
@@ -37,7 +36,7 @@ function TodoForm(props) {
             filePath = "localhost/" + props.userID;
         }
         try {
-            console.log("0000000000", filePath)
+            console.log("Debug filePath -- ", filePath)
             await props.mySky.setJSON(filePath, jsonData);
         } catch (error) {
             props.updateErrorMessage(`Error with setJSON: ${error.message}`)
@@ -136,7 +135,6 @@ function TodoForm(props) {
     };
 
     return (
-
         <>
             <div>
                 <br></br>

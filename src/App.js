@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/header/Header';
-// import Home from './components/Home/Home';
 import Alert from './components/alert/Alert';
 import { SkynetClient } from "skynet-js";
 
@@ -22,6 +21,7 @@ const portal =
 // Initiate the SkynetClient
 // const client = new SkynetClient(portal);
 const client = new SkynetClient();
+
 function App() {
   const [title, updateTitle] = useState(null);
   const [userID, setUserID] = useState();
@@ -43,16 +43,20 @@ function App() {
         const mySky = await client.loadMySky(dataDomain);
         // check if user is already logged in with permissions
         const loggedData = await mySky.checkLogin();
+
         setMySky(mySky);
         setLoggedIn(loggedData);
+
         if (loggedData) {
           setUserID(await mySky.userID());
         }
 
         setLoading(false)
       } catch (e) {
+
         setLoading(false)
         console.error(e);
+
       }
     }
 
@@ -72,11 +76,12 @@ function App() {
   };
 
   const handleMySkyLogout = async () => {
+
     await mySky.logout();
 
-    //set react state
     setLoggedIn(false);
-    setUserID('');
+    setUserID();
+
   };
 
   // define async setup function
@@ -86,7 +91,12 @@ function App() {
       <div className="todoApp">
         <Router>
           <div >
-            <Header title={title} loggedIn={loggedIn} handleMySkyLogout={handleMySkyLogout} handleMySkyLogin={handleMySkyLogin} />
+            <Header
+              title={title}
+              loggedIn={loggedIn}
+              handleMySkyLogout={handleMySkyLogout}
+              handleMySkyLogin={handleMySkyLogin}
+            />
             <div className="container d-flex align-items-center flex-column">
               <Switch>
                 <Route path="/" exact={true}>
@@ -95,7 +105,7 @@ function App() {
                   <div className="justify-content-center">
                     {loggedIn === true && (
                       <div>
-                        <span className="h2"> Hello Logged In user - What is your plan for today?</span>
+                        <span className="h2"> Hello Logged-In user - What is your plan for today?</span>
                         <br />
                         <br />
                         <TodoForm
@@ -118,14 +128,12 @@ function App() {
 
                   </div>
                 </Route>
-
-
-
               </Switch>
             </div>
           </div>
         </Router>
       </div>
+
       <Alert errorMessage={errorMessage} hideError={updateErrorMessage} />
     </>
   );

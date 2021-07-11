@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-   Button
-} from 'semantic-ui-react';
+
 
 function Header(props) {
     const capitalize = (s) => {
@@ -18,7 +16,7 @@ function Header(props) {
                 {props.loggedIn === true && (
                     <div>
                         <button className="button" onClick={() => props.handleMySkyLogout()}>
-                            Log Out of MySky
+                            Log-Out of MySky
                         </button>
                     </div>
                 )}
